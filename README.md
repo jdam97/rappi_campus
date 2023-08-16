@@ -32,6 +32,17 @@ Algunos de los servicios y herramientas disponibles son:
 
 Nuesto enfoque principalmente se hará en el servicio que ofrece rappiTravel, ya que este nos ofrece una mejor curva de aprendizaje y es más de nuestro interes.
 
+### Rappi_Travel
+Rappi, la súper app de tecnología, anunció el lanzamiento de Rappi Travel, a través de la cual se podrán reservar y descubrir las mejores ofertas en viajes. A partir de hoy, los usuarios encontrarán vuelos a cualquier destino del mundo y, próximamente, esta nueva funcionalidad sumará alojamientos, seguros de viaje, paquetes turísticos, excursiones y alquiler de vehículos.
+
+"En Rappi estamos en la búsqueda constante por ofrecer nuevas soluciones e innovaciones para los millones de usuarios que utilizan nuestra aplicación. A través de Rappi Travel, y de nuestra tecnología, queremos apoyar y brindar incentivos al sector turístico y contribuir a su reactivación para este nuevo año", afirmó Matías Casoy, gerente General para Rappi Cono Sur.
+
+El objetivo principal de Rappi Travel es integrar las mejores ofertas de vuelo, y es parte de la estrategia de la compañía para consolidarse como la súper app de Latinoamérica.
+
+
+A través de este nuevo botón, los usuarios podrán vivir una experiencia de compra novedosa, sencilla, rápida y totalmente digital. Además, tendrán la posibilidad de crear alertas para ser notificados sobre los mejores vuelos y promociones. 
+
+"Gran parte de nuestros usuarios son viajeros y sabemos que para ellos puede ser muy útil contar con la posibilidad de acceder a ofertas de pasajes aéreos en la misma aplicación donde realizan sus compras de cercanía. Como oferta de lanzamiento, durante todo el mes de enero, los usuarios que realicen una compra en Rappi Travel encontrarán promociones y devoluciones de hasta hasta el 20% en rappicréditos, que podrán ser utilizados para compras en cualquier producto dentro de la app", afirmó Guido Becher, Head Global de Rappi Travel.
 
 ## Bibliografia
 * [Rappi](https://www.rappi.com.co/)
