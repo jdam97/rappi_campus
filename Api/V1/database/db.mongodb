@@ -1,1 +1,25 @@
 use("Rappi_Travel");
+db.createCollection("usuarios",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            required:["id,cedula,nombre,apellido,email"],
+            properties:{
+                id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
+                cedula: {bsonType: "string", description: "'cedula' solo puede contener formato string, recibe numeros y es requerido", pattern: "^\d+$"},
+                nombre: {bsonType: "string", description: "'nombre' solo puede contener formato de tipo string y esrequerido"},
+                apellido: {bsonType: "string", description: "'apellido' solo puede contener formato de tipo string"},
+                email: {bsonType: "string", description: "'email' es requerido"},
+                direccion:{
+                    bsonType:"object",
+                    required:["ciudad","direccion"],
+                    properties:{
+                        pais:{bsonType:"string"},
+                        departamento:{bsonType:"string"},
+                        ciudad:{bsonType:"string", description:"'ciudad' es un campo obligatorio"}
+                    }
+                }
+            }
+        }
+    }
+})
