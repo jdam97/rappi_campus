@@ -1,1 +1,115 @@
 use("Rappi_Travel");
+db.createCollection("usuarios",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            required:["id,cedula,nombre,apellido,email","direccion"],
+            properties:{
+                id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
+                cedula: {bsonType: "string", description: "'cedula' solo puede contener formato string, recibe numeros y es requerido"},
+                nombre: {bsonType: "string", description: "'nombre' solo puede contener formato de tipo string y esrequerido"},
+                apellido: {bsonType: "string", description: "'apellido' solo puede contener formato de tipo string"},
+                email: {bsonType: "string", description: "'email' es requerido"},
+                direccion:{
+                    bsonType:"object",
+                    required:["ciudad"],
+                    properties:{
+                        pais:{bsonType:"string"},
+                        departamento:{bsonType:"string"},
+                        ciudad:{bsonType:"string", description:"'ciudad' es un campo obligatorio"}
+                    }
+                },
+            }
+        }
+    }
+});
+
+use("Rappi_Travel");
+db.createCollection("vuelos",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            required:["id,origen,destino,ida,vuelta,npasajeros,clase,tipo_huesped,estado"],
+            properties:{
+                id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
+                origen:{bsonType:"string", description: "'origen' debe ser de tipo string y es requerido"},
+                destino:{bsonType:"string", description: "'destino' debe ser de tipo string y es requerido"},
+                ida: {bsonType:"date", description: "'ida' debe ser de tipo date y es requerido"},
+                vuelta:{bsonType:"date", description: "'vuelta' debe ser de tipo date y es requerido"},
+                npasajeros:{bsonType:"int", description: "'vuelta' debe ser entero y es requerido"},
+                clase:{enum:['ejecutiva','primera_clase','economy'], description: "'clase' solo puede contener 'ejecutiva', 'primera_clase' 0 'economy'"},
+                tipo_huesped:{
+                    bsonType:"object",
+                    required:["adultos","niños"],
+                    properties:{
+                        adultos:{bsonType:"int"},
+                        niños:{bsonType:"int"}
+                    }
+                },
+
+            }
+        }
+    }
+})
+
+use("Rappi_Travel");
+db.createCollection("hospedajes",{
+    validator:{
+        $jsonSchema:{
+            bsonType:"object",
+            required:["id,destino,tipo,llegada,salida,habitaciones,huespedes,tipo_huesped,estado"],
+            properties:{
+                id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
+                destino:{bsonType:"string", description:"'destino' debe ser de tipo string y es requerido"},
+                tipo:{bsonType:"string", description:"'tipo' debe ser de tipo string y es requerido"},
+                llegada:{bsonType:"date", description:"'llegada' debe ser de tipo date y es requerido"},
+                salida:{bsonType:"date", description:"'salida' debe ser de tipo date y es requerido"},
+                habitaciones:{bsonType:"int", description:"'habitaciones' debe ser de tipo entero y es requerido"},
+                nhuespedes:{bsonType:"int", description:"'nhuespedes' debe ser de tipo entero y es requerido"},
+                tipo_huesped:{
+                    bsonType:"object",
+                    required:["adultos","niños"],
+                    properties:{
+                        adultos:{bsonType:"int"},
+                        niños:{bsonType:"int"}
+                    }
+                }
+            }
+        }
+    }
+})
+
+use("Rappi_Travel");
+db.createCollection("autos",{
+    validator:{
+        $jsonSchema:{
+            bsonType:"object",
+            required:["id,punto_recogida,punto_devolucion,fecha_recogida,fecha_devolucion"],
+            properties:{
+                id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
+                punto_recogida:{bsonType:"string",description:"'punto_recogida' debe ser tipo string y es requerido"},
+                punto_devolucion:{bsonType:"string",description:"'punto_devolucion' debe ser tipo string y es requerido"},
+                fecha_recogida:{bsonType:"date",description:"'fecha_recogida' debe ser de tipo date y es requerido"},
+                fecha_devolucion:{bsonType:"date", description:"'fecha_devolucion' debe ser tipo date y es requerido"}
+            }
+        }
+    }
+})
+
+use("Rappi_Travel");
+db.createCollection("contratos",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            required: ["id","usuarioId", "tipoReserva", "reservaId", "fechaContrato","estado"],
+            properties:{
+                id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
+                usuarioId:{bsonType: "int", description:"'usuarioId' debe ser entero y es requerido"},
+                tipoReserva:{enum:["vuelo", "auto", "hospedaje"],description:"'tipoReserva' solo debe contener vuelo, auto u hospedaje"},
+                resevaId:{bsonType:"int", description:"reservaId debe ser de tipo entero y referencia la reserva"},
+                fechaContrato:{bsonType:"date", description:"'fechaContrato' debe ser de tipo date y es requerida"},
+                estado:{bsonType:"string", description:"'estado' debe ser de tipo string y es requerido"}
+            }
+        }
+    }
+})
