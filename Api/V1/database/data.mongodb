@@ -1,0 +1,299 @@
+use("Rappi_Travel");
+db.usuarios.insertMany([
+    {
+        "id": 1,
+        "cedula": "123456789",
+        "nombre": "Juan",
+        "apellido": "Perez",
+        "email": "juan@example.com",
+        "direccion": {
+            "pais": "Colombia",
+            "departamento": "Antioquia",
+            "ciudad": "Medellín",
+            "direccion": "Calle 123"
+        }
+    },
+    {
+        "id": 2,
+        "cedula": "987654321",
+        "nombre": "María",
+        "apellido": "López",
+        "email": "maria@example.com",
+        "direccion": {
+          "pais": "Colombia",
+          "departamento": "Valle del Cauca",
+          "ciudad": "Cali",
+          "direccion": "Avenida Principal"
+        }
+    },
+    {
+        "id": 3,
+        "cedula": "456789012",
+        "nombre": "Carlos",
+        "apellido": "Gómez",
+        "email": "carlos@example.com",
+        "direccion": {
+          "pais": "Perú",
+          "departamento": "Lima",
+          "ciudad": "Lima",
+          "direccion": "Calle Central"
+        }
+    },
+    {
+        "id": 4,
+        "cedula": "111222333",
+        "nombre": "Ana",
+        "apellido": "Martínez",
+        "email": "ana@example.com",
+        "direccion": {
+          "pais": "Argentina",
+          "departamento": "Buenos Aires",
+          "ciudad": "Buenos Aires",
+          "direccion": "Avenida Principal"
+        }
+    },
+    {
+        "id": 5,
+        "cedula": "555666777",
+        "nombre": "Pedro",
+        "apellido": "Rodríguez",
+        "email": "pedro@example.com",
+        "direccion": {
+          "pais": "Chile",
+          "departamento": "Santiago",
+          "ciudad": "Santiago",
+          "direccion": "Calle Central"
+        }
+    },
+]);
+
+use("Rappi_Travel");
+db.vuelos.insertMany([
+    {
+        "id": 1,
+        "origen": "Medellín",
+        "destino": "Bogotá",
+        "ida": "2023-09-01",
+        "vuelta": "2023-09-10",
+        "npasajeros": 2,
+        "clase": "economy",
+        "tipo_huesped": {
+          "adultos": 2,
+          "niños": 0
+        },
+        "estado": "reservado"
+    },
+    {
+        "id": 2,
+        "origen": "Bogotá",
+        "destino": "Miami",
+        "ida": "2023-09-15",
+        "vuelta": "2023-09-25",
+        "npasajeros": 1,
+        "clase": "primera_clase",
+        "tipo_huesped": {
+          "adultos": 1,
+          "niños": 0
+        },
+        "estado": "confirmado"
+    },
+    {
+        "id": 3,
+        "origen": "Lima",
+        "destino": "Santiago",
+        "ida": "2023-10-10",
+        "vuelta": "2023-10-20",
+        "npasajeros": 3,
+        "clase": "economy",
+        "tipo_huesped": {
+          "adultos": 2,
+          "niños": 1
+        },
+        "estado": "reservado"
+    },
+    {
+        "id": 4,
+        "origen": "Buenos Aires",
+        "destino": "Sao Paulo",
+        "ida": "2023-11-01",
+        "vuelta": "2023-11-10",
+        "npasajeros": 2,
+        "clase": "economy",
+        "tipo_huesped": {
+          "adultos": 2,
+          "niños": 0
+        },
+        "estado": "pendiente"
+    },
+    {
+        "id": 5,
+        "origen": "Ciudad de México",
+        "destino": "Los Ángeles",
+        "ida": "2023-12-05",
+        "vuelta": "2023-12-15",
+        "npasajeros": 4,
+        "clase": "ejecutiva",
+        "tipo_huesped": {
+          "adultos": 3,
+          "niños": 1
+        },
+        "estado": "confirmado"
+    },
+]);
+
+use("Rappi_Travel");
+db.hospedajes.insertMany([
+    {
+        "id": 1,
+        "destino": "Cartagena",
+        "tipo": "hotel",
+        "llegada": "2023-10-15",
+        "salida": "2023-10-20",
+        "habitaciones": 1,
+        "nhuespedes": 2,
+        "tipo_huesped": {
+          "adultos": 2,
+          "niños": 0
+        },
+        "estado": "reservado"
+      },
+      {
+        "id": 2,
+        "destino": "Miami",
+        "tipo": "apartamento",
+        "llegada": "2023-09-20",
+        "salida": "2023-09-28",
+        "habitaciones": 1,
+        "nhuespedes": 2,
+        "tipo_huesped": {
+          "adultos": 2,
+          "niños": 0
+        },
+        "estado": "reservado"
+      },
+      {
+        "id": 3,
+        "destino": "Santiago",
+        "tipo": "hotel",
+        "llegada": "2023-10-15",
+        "salida": "2023-10-25",
+        "habitaciones": 2,
+        "nhuespedes": 3,
+        "tipo_huesped": {
+          "adultos": 2,
+          "niños": 1
+        },
+        "estado": "confirmado"
+      },
+      {
+        "id": 4,
+        "destino": "Sao Paulo",
+        "tipo": "casa",
+        "llegada": "2023-11-05",
+        "salida": "2023-11-15",
+        "habitaciones": 3,
+        "nhuespedes": 4,
+        "tipo_huesped": {
+          "adultos": 3,
+          "niños": 1
+        },
+        "estado": "reservado"
+      },
+      {
+        "id": 5,
+        "destino": "Los Ángeles",
+        "tipo": "hotel",
+        "llegada": "2023-12-10",
+        "salida": "2023-12-18",
+        "habitaciones": 1,
+        "nhuespedes": 2,
+        "tipo_huesped": {
+          "adultos": 2,
+          "niños": 0
+        },
+        "estado": "confirmado"
+    },   
+]);
+
+use("Rappi_Travel");
+db.autos.insertMany([
+    {
+        "id": 1,
+        "punto_recogida": "Aeropuerto",
+        "punto_devolucion": "Hotel",
+        "fecha_recogida": "2023-11-01",
+        "fecha_devolucion": "2023-11-10"
+      },
+      {
+        "id": 2,
+        "punto_recogida": "Hotel",
+        "punto_devolucion": "Aeropuerto",
+        "fecha_recogida": "2023-09-15",
+        "fecha_devolucion": "2023-09-25"
+      },
+      {
+        "id": 3,
+        "punto_recogida": "Aeropuerto",
+        "punto_devolucion": "Hotel",
+        "fecha_recogida": "2023-10-10",
+        "fecha_devolucion": "2023-10-20"
+      },
+      {
+        "id": 4,
+        "punto_recogida": "Hotel",
+        "punto_devolucion": "Aeropuerto",
+        "fecha_recogida": "2023-11-01",
+        "fecha_devolucion": "2023-11-10"
+      },
+      {
+        "id": 5,
+        "punto_recogida": "Aeropuerto",
+        "punto_devolucion": "Hotel",
+        "fecha_recogida": "2023-12-05",
+        "fecha_devolucion": "2023-12-15"
+      },   
+]);
+
+use("Rappi_Travel");
+db.contratos.insertMany([
+    {
+        "id": 1,
+        "usuarioId": 1,
+        "tipoReserva": "vuelo",
+        "resevaId": 1,
+        "fechaContrato": "2023-08-29",
+        "estado": "activo"
+    },
+    {
+        "id": 2,
+        "usuarioId": 2,
+        "tipoReserva": "auto",
+        "resevaId": 2,
+        "fechaContrato": "2023-09-10",
+        "estado": "activo"
+      },
+      {
+        "id": 3,
+        "usuarioId": 3,
+        "tipoReserva": "hospedaje",
+        "resevaId": 3,
+        "fechaContrato": "2023-10-20",
+        "estado": "pendiente"
+      },
+      {
+        "id": 4,
+        "usuarioId": 4,
+        "tipoReserva": "vuelo",
+        "resevaId": 4,
+        "fechaContrato": "2023-11-05",
+        "estado": "activo"
+      },
+      {
+        "id": 5,
+        "usuarioId": 5,
+        "tipoReserva": "hospedaje",
+        "resevaId": 5,
+        "fechaContrato": "2023-12-10",
+        "estado": "confirmado"
+      },    
+]);
