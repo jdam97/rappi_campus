@@ -3,20 +3,21 @@ db.createCollection("usuarios",{
     validator:{
         $jsonSchema:{
             bsonType: "object",
-            required:["id,cedula,nombre,apellido,email"],
+            required:["id","cedula","nombre","apellido","email","ubicacion"],
             properties:{
                 id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
-                cedula: {bsonType: "string", description: "'cedula' solo puede contener formato string, recibe numeros y es requerido", pattern: "^\d+$"},
+                cedula: {bsonType: "string", description: "'cedula' solo puede contener formato string, recibe numeros y es requerido"},
                 nombre: {bsonType: "string", description: "'nombre' solo puede contener formato de tipo string y esrequerido"},
                 apellido: {bsonType: "string", description: "'apellido' solo puede contener formato de tipo string"},
                 email: {bsonType: "string", description: "'email' es requerido"},
-                direccion:{
+                ubicacion:{
                     bsonType:"object",
                     required:["ciudad","direccion"],
                     properties:{
                         pais:{bsonType:"string"},
                         departamento:{bsonType:"string"},
-                        ciudad:{bsonType:"string", description:"'ciudad' es un campo obligatorio"}
+                        ciudad:{bsonType:"string", description:"'ciudad' es un campo obligatorio"},
+                        direccion:{bsonType:"string", description:"'direccion' es un campo obligatorio"}
                     }
                 },
             }
@@ -29,16 +30,16 @@ db.createCollection("vuelos",{
     validator:{
         $jsonSchema:{
             bsonType: "object",
-            required:["id,origen,destino,ida,vuelta,npasajeros,clase,tipo_huesped,estado"],
+            required:["id","origen","destino","ida","vuelta","npasajeros","clase","tipoHuesped"],
             properties:{
-                id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
-                origen:{bsonType:"string", description: "'origen' debe ser de tipo string y es requerido"},
-                destino:{bsonType:"string", description: "'destino' debe ser de tipo string y es requerido"},
+                id: {bsonType:"int", description:"'id' debe ser un entero y es requerido"},
+                origen: {bsonType:"string", description: "'origen' debe ser de tipo string y es requerido"},
+                destino: {bsonType:"string", description: "'destino' debe ser de tipo string y es requerido"},
                 ida: {bsonType:"date", description: "'ida' debe ser de tipo date y es requerido"},
-                vuelta:{bsonType:"date", description: "'vuelta' debe ser de tipo date y es requerido"},
-                npasajeros:{bsonType:"int", description: "'vuelta' debe ser entero y es requerido"},
-                clase:{enum:['ejecutiva','primera_clase','economy'], description: "'clase' solo puede contener 'ejecutiva', 'primera_clase' 0 'economy'"},
-                tipo_huesped:{
+                vuelta: {bsonType:"date", description: "'vuelta' debe ser de tipo date y es requerido"},
+                npasajeros: {bsonType:"int", description: "'vuelta' debe ser entero y es requerido"},
+                clase: {enum:["ejecutiva","primeraClase","economy"], description: "'clase' solo puede contener 'ejecutiva', 'primeraClase' o 'economy'"},
+                tipoHuesped:{
                     bsonType:"object",
                     required:["adultos","niños"],
                     properties:{
@@ -46,7 +47,6 @@ db.createCollection("vuelos",{
                         niños:{bsonType:"int"}
                     }
                 },
-
             }
         }
     }
@@ -57,7 +57,7 @@ db.createCollection("hospedajes",{
     validator:{
         $jsonSchema:{
             bsonType:"object",
-            required:["id,destino,tipo,llegada,salida,habitaciones,huespedes,tipo_huesped,estado"],
+            required:["id","destino","tipo","llegada","salida","habitaciones","nhuespedes","tipo_huesped"],
             properties:{
                 id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
                 destino:{bsonType:"string", description:"'destino' debe ser de tipo string y es requerido"},
@@ -84,7 +84,7 @@ db.createCollection("autos",{
     validator:{
         $jsonSchema:{
             bsonType:"object",
-            required:["id,punto_recogida,punto_devolucion,fecha_recogida,fecha_devolucion"],
+            required:["id,punto_recogida","punto_devolucion","fecha_recogida","fecha_devolucion"],
             properties:{
                 id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
                 punto_recogida:{bsonType:"string",description:"'punto_recogida' debe ser tipo string y es requerido"},
@@ -101,7 +101,7 @@ db.createCollection("contratos",{
     validator:{
         $jsonSchema:{
             bsonType: "object",
-            required: ["id","usuarioId", "tipoReserva", "reservaId", "fechaContrato","estado"],
+            required: ["id","usuarioId","tipoReserva","reservaId","fechaContrato","estado"],
             properties:{
                 id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
                 usuarioId:{bsonType: "int", description:"'usuarioId' debe ser entero y es requerido"},
