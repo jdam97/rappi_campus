@@ -101,7 +101,15 @@ db.createCollection("contratos",{
     validator:{
         $jsonSchema:{
             bsonType: "object",
-            required: ["usuario", "tipoReserva", "reservaId", "fechaContrato"]
+            required: ["id","usuarioId", "tipoReserva", "reservaId", "fechaContrato","estado"],
+            properties:{
+                id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
+                usuarioId:{bsonType: "int", description:"'usuarioId' debe ser entero y es requerido"},
+                tipoReserva:{enum:["vuelo", "auto", "hospedaje"],description:"'tipoReserva' solo debe contener vuelo, auto u hospedaje"},
+                resevaId:{bsonType:"int", description:"reservaId debe ser de tipo entero y referencia la reserva"},
+                fechaContrato:{bsonType:"date", description:"'fechaContrato' debe ser de tipo date y es requerida"},
+                estado:{bsonType:"string", description:"'estado' debe ser de tipo string y es requerido"}
+            }
         }
     }
 })
