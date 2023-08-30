@@ -6,6 +6,6 @@ import { vSchema } from "../helpers/validationSchema.js";
 const VuelosApp = Router();
 
 VuelosApp.get("/",vuelosConsulta.getAllVuelos);
-
+VuelosApp.get("/:vuelosID",vuelosConsulta.getVuelosById);
 
 export default VuelosApp;
