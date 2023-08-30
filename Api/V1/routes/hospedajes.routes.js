@@ -8,3 +8,5 @@ const HospedajeApp = Router();
 HospedajeApp.get("/",HospedajeConsulta.getAllHospedajes);
 HospedajeApp.get("/:HospedajesID",HospedajeConsulta.getHospedajesById);
 HospedajeApp.post("/",vSchema(HospedajesSchema),HospedajeConsulta.createHospedajes);
+
+export default HospedajeApp
