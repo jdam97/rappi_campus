@@ -34,3 +34,19 @@ export const getVuelosById = async(req,res)=>{
         
     }
 }
+
+export const createVuelos = async(req,res)=>{
+    try {
+        let data = await vuelosQuery.createVuelos(req.body);
+        res.status(500).send({
+            status:200,
+            message:'Nice!',
+            data
+        })
+    } catch (error) {
+        res.status(500).send({
+            message:"No se pudo obtener vuelo por id",
+            error:error.message
+        })
+    }
+}
