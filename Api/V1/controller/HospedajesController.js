@@ -1,26 +1,26 @@
-import * as UsuarioQuery from "../services/UserServicio.js";
+import * as HospedajesQuery from "../services/HospedajesServicio.js";
 
-export const  getAllUsuarios = async (req, res) => {
+export const  getAllHospedajes = async (req, res) => {
     try {
-        let data = await UsuarioQuery.getAllUsuarios();
+        let data = await UsuarioQuery.getAllHospedajes();
         res.status(200).send({status: 200,message: "Ok", data})
     } catch (error) {
         res.status(500).send({status: 500,message: error.message})        
     }
 };
 
-export const  getUsuariosById = async (req, res) => {
+export const  getHospedajesById = async (req, res) => {
     try {
-        let data = await UsuarioQuery.getUsuariosById(req.params.usuariosID);
+        let data = await UsuarioQuery.getHospedajesById(req.params.HospedajesID);
         res.status(200).send({status: 200,message: "Ok", data})
     } catch (error) {
         res.status(500).send({status: 500,message: error.message})        
     }
 };
 
-export const  createUsuarios = async (req, res) => {
+export const  createHospedajes = async (req, res) => {
     try {
-        let data = await UsuarioQuery.createUsuarios(req.body);
+        let data = await UsuarioQuery.createHospedajes(req.body);
         res.status(200).send({status: 200,message: "Ok", data})
     } catch (error) {
         res.status(500).send({status: 500,message: error.message})        
