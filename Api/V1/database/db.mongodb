@@ -84,7 +84,7 @@ db.createCollection("autos",{
     validator:{
         $jsonSchema:{
             bsonType:"object",
-            required:["id,punto_recogida","punto_devolucion","fecha_recogida","fecha_devolucion"],
+            required:["id","punto_recogida","punto_devolucion","fecha_recogida","fecha_devolucion"],
             properties:{
                 id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
                 punto_recogida:{bsonType:"string",description:"'punto_recogida' debe ser tipo string y es requerido"},
@@ -106,7 +106,7 @@ db.createCollection("contratos",{
                 id:{bsonType:"int", description:"'id' debe ser un entero y es requerido"},
                 usuarioId:{bsonType: "int", description:"'usuarioId' debe ser entero y es requerido"},
                 tipoReserva:{enum:["vuelo", "auto", "hospedaje"],description:"'tipoReserva' solo debe contener vuelo, auto u hospedaje"},
-                resevaId:{bsonType:"int", description:"reservaId debe ser de tipo entero y referencia la reserva"},
+                reservaId:{bsonType:"int", description:"reservaId debe ser de tipo entero y referencia la reserva"},
                 fechaContrato:{bsonType:"date", description:"'fechaContrato' debe ser de tipo date y es requerida"},
                 estado:{bsonType:"string", description:"'estado' debe ser de tipo string y es requerido"}
             }
