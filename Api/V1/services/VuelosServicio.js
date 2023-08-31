@@ -11,6 +11,7 @@ export const getAllVuelos = async()=>{
 
 //Get by id
 export const getVuelosById = async(vuelosID)=>{
+    console.log(vuelosID);
 let db = await connectDB();
 let collection = await db.collection('vuelos');
 let data =  collection.find({id:Number(vuelosID)}).toArray();

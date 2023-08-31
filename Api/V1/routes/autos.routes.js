@@ -8,5 +8,7 @@ const AutosApp = Router();
 
 AutosApp.get("/",autosConsulta.getAllAutos);
 AutosApp.get("/:autosId",autosConsulta.getAutosById)
+AutosApp.post("/",autosConsulta.createAutos);
+AutosApp.delete("/:_id",autosConsulta.deleteAutos);
 
 export default AutosApp;
