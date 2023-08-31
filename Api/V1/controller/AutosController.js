@@ -54,7 +54,7 @@ export const createAutos = async(req,res)=>{
 //Delete
 export const deleteAutos = async(req,res)=>{
     try {
-        let data = await autosQuerys.deleteVuelos(req.params._id);
+        await autosQuerys.deleteVuelos(req.params._id);
         res.status(200).send({
             status:200,
             message: "Reserva de auto eliminada con exito!"
@@ -65,6 +65,15 @@ export const deleteAutos = async(req,res)=>{
             message:"No se pudo eliminar la reserva de auto",
             error:error.message
         })
+    }
+}
+
+//Put
+export const updateAutos = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
     }
 }
 

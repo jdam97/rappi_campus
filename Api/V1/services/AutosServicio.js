@@ -31,3 +31,11 @@ export const deleteVuelos = async(idAuto)=>{
     let data = collection.deleteOne({_id: new ObjectId(idAuto)})
     return data
 }
+
+//Put
+export const putVuelos = async(idAuto)=>{
+    let db= await connectDB();
+    let collection = await db.collection('autos');
+    let data = collection.updateOne({_id: new ObjectId(idAuto)})
+    return data
+}
