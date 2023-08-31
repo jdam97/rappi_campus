@@ -1,5 +1,6 @@
 import * as vuelosQuery from "../services/VuelosServicio.js";
 
+//Get All
 export const getAllVuelos = async (req,res)=>{
     try {
         let data = await vuelosQuery.getAllVuelos();
@@ -18,6 +19,7 @@ export const getAllVuelos = async (req,res)=>{
 
 }
 
+//Get by id
 export const getVuelosById = async(req,res)=>{
     try {
         let data = await vuelosQuery.getVuelosById(req.params.vuelosID);
@@ -35,6 +37,7 @@ export const getVuelosById = async(req,res)=>{
     }
 }
 
+//Post
 export const createVuelos = async(req,res)=>{
     try {
         let data = await vuelosQuery.createVuelos(req.body);
@@ -51,6 +54,7 @@ export const createVuelos = async(req,res)=>{
     }
 }
 
+//Delete
 export const deleteVuelos = async(req,res)=>{
     try {
         vuelosQuery.deleteVuelos(req.params._id)

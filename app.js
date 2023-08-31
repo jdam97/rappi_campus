@@ -4,6 +4,7 @@ import UsuarioApp from "./Api/V1/routes/user.routes.js";
 import HospedajeApp from "./Api/V1/routes/hospedajes.routes.js";
 import ContratosApp from "./Api/V1/routes/contratos.routes.js";
 import VuelosApp from "./Api/V1/routes/vuelos.routes.js"
+import AutosApp from "./Api/V1/routes/autos.routes.js"
 import { limitRequest } from "./Api/V1/config/limit.js";
 
 dotenv.config("../");
@@ -16,6 +17,7 @@ app.use("/usuarios",UsuarioApp);
 app.use("/vuelos",VuelosApp)
 app.use("/hospedajes",HospedajeApp);
 app.use("/contratos",ContratosApp);
+app.use("/autos",AutosApp);
 
 let config = JSON.parse(process.env.MY_SERVER);
 app.listen(config, ()=>{
