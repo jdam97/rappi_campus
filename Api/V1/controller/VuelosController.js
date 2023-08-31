@@ -38,7 +38,7 @@ export const getVuelosById = async(req,res)=>{
 export const createVuelos = async(req,res)=>{
     try {
         let data = await vuelosQuery.createVuelos(req.body);
-        res.status(500).send({
+        res.status(200).send({
             status:200,
             message:'Nice!',
             data
@@ -48,5 +48,18 @@ export const createVuelos = async(req,res)=>{
             message:"No se pudo obtener vuelo por id",
             error:error.message
         })
+    }
+}
+
+export const deleteVuelos = async(req,res)=>{
+    try {
+        vuelosQuery.deleteVuelos(req.params._id)
+        res.status(200).send({
+            status:200,
+            message:'Nice!',
+        })
+    } catch (error) {
+        res.status(500).send({message:"No se pudo borrar el vuelo",
+        error:error.message})
     }
 }
