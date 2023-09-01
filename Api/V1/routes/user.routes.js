@@ -8,5 +8,4 @@ const UsuarioApp = Router();
 UsuarioApp.get("/",UsuarioConsulta.getAllUsuarios);
 UsuarioApp.get("/:usuariosID",UsuarioConsulta.getUsuariosById);
 UsuarioApp.post("/",vSchema(UsuariosSchema),UsuarioConsulta.createUsuarios);
-
 export default UsuarioApp;
