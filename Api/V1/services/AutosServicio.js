@@ -25,7 +25,7 @@ export const createAutos = async(Auto)=>{
 }
 
 //Delete
-export const deleteVuelos = async(idAuto)=>{
+export const deleteAutos = async(idAuto)=>{
     let db = await connectDB();
     let collection = await db.collection('autos');
     let data = collection.deleteOne({_id: new ObjectId(idAuto)})
@@ -33,9 +33,9 @@ export const deleteVuelos = async(idAuto)=>{
 }
 
 //Put
-export const putVuelos = async(idAuto)=>{
+export const putAutos = async(autosId,req)=>{
     let db= await connectDB();
     let collection = await db.collection('autos');
-    let data = collection.updateOne({_id: new ObjectId(idAuto)})
+    let data = collection.updateOne({_id: new ObjectId(autosId)}, {$set: req.body})
     return data
 }

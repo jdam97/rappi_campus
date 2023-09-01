@@ -54,7 +54,7 @@ export const createAutos = async(req,res)=>{
 //Delete
 export const deleteAutos = async(req,res)=>{
     try {
-        await autosQuerys.deleteVuelos(req.params._id);
+        await autosQuerys.deleteAutos(req.params._id);
         res.status(200).send({
             status:200,
             message: "Reserva de auto eliminada con exito!"
@@ -71,9 +71,17 @@ export const deleteAutos = async(req,res)=>{
 //Put
 export const updateAutos = async(req,res)=>{
     try {
-        
+        await autosQuerys.putAutos(req.params._id,req)
+        res.status(200).send({
+            message:"Reserva editada con exito!",
+            status:200,
+            
+        })
     } catch (error) {
-        
+        res.status(500).send({
+            message:"No se pudo actualizar la reserva",
+            error:error.message
+        })
     }
 }
 

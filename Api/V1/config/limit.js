@@ -7,7 +7,7 @@ export let limitRequest = ()=>{
         standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
         legacyHeaders: false, // Disable the `X-RateLimit-*` headers
         skip:(req,res)=>{
-            if(req.headers["content-length"]>90){
+            if(req.headers["content-length"]>150){
                 res.status(413).send({status:413,message:"El tamaño si importa "})
                 return true
             }
