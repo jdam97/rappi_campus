@@ -1,6 +1,6 @@
 import { Router } from "express";
 import * as autosConsulta from "../controller/AutosController.js"
-import { vSchema } from "../helpers/validationSchema.js";
+import { vSchema } from "../../../helpers/validationSchema.js";
 
 const AutosApp = Router();
 

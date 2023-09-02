@@ -6,7 +6,7 @@ export const HospedajesSchema = Joi.object({
     tipo: Joi.string().required(),
     llegada: Joi.date().required(),
     salida: Joi.date().required(),
-    habitaciones: Joi.string().required(),
+    habitaciones: Joi.number().required(),
     nhuespedes: Joi.number().required(),
     tipo_huesped: Joi.object({
         adultos: Joi.number().required(),

@@ -1,4 +1,4 @@
-import { connectDB } from "../database/atlas.js";
+import { connectDB } from "../../../database/atlas.js";
 import {ObjectId} from "mongodb";
 
 //Get All
@@ -20,18 +20,20 @@ return data
 
 //Post
 export const createVuelos = async(Vuelos)=>{
+
 let db = await connectDB();
 let collection = await db.collection('vuelos');
-let data = collection.insertOne(Vuelos);
+let fechaIda = new Date(Vuelos.ida)
+let fechaVuelta = new Date(Vuelos.vuelta)
+let daticos = {...Vuelos,ida:fechaIda,vuelta:fechaVuelta}
+let data = collection.insertOne(daticos);
 return data
 }
 
 //Delete
 export const deleteVuelos = async (id)=>{
-    
     let db = await connectDB();
-    let collection = await db.collection('vuelos');
-    let data = collection.deleteOne({_id: new ObjectId(id)})
-    
+    let collection = db.collection('vuelos');
+    let data = await collection.deleteOne({_id: new ObjectId(id)})
     return data
 }

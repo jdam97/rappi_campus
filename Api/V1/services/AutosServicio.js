@@ -1,4 +1,4 @@
-import { connectDB } from "../database/atlas.js";
+import { connectDB } from "../../../database/atlas.js";
 import { ObjectId } from "mongodb";
 
 //Get All

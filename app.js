@@ -5,7 +5,7 @@ import HospedajeApp from "./Api/V1/routes/hospedajes.routes.js";
 import ContratosApp from "./Api/V1/routes/contratos.routes.js";
 import VuelosApp from "./Api/V1/routes/vuelos.routes.js"
 import AutosApp from "./Api/V1/routes/autos.routes.js"
-import { limitRequest } from "./Api/V1/config/limit.js";
+import { limitRequest } from "./config/limit.js";
 
 dotenv.config("../");
 

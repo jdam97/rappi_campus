@@ -48,7 +48,7 @@ export const createVuelos = async(req,res)=>{
         })
     } catch (error) {
         res.status(500).send({
-            message:"No se pudo obtener vuelo por id",
+            message:"No se pudo crear vuelo",
             error:error.message
         })
     }
@@ -57,7 +57,7 @@ export const createVuelos = async(req,res)=>{
 //Delete
 export const deleteVuelos = async(req,res)=>{
     try {
-        vuelosQuery.deleteVuelos(req.params._id)
+        await vuelosQuery.deleteVuelos(req.params._id)
         res.status(200).send({
             status:200,
             message:'Nice!',

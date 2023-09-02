@@ -1,4 +1,4 @@
-import { connectDB } from "../database/atlas.js";
+import { connectDB } from "../../../database/atlas.js";
 
 export const getAllContratos = async ()=>{
     let db = await connectDB();

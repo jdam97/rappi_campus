@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as ContratosConsultas from "../controller/ContratosController.js";
-import { vSchema } from "../helpers/validationSchema.js";
+import { vSchema } from "../../../helpers/validationSchema.js";
+import {ContratosSchema} from "../../../middleware/Contratos.js"
 
 
 const ContratosApp = Router();
