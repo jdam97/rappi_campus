@@ -137,7 +137,7 @@ Busca la carpeta **database** y luego el archivo **data.mongodb**(Datos mongodb)
 npm run dev
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------
-POR ARREGLAR
+
 ## IMPLEMENTACIÓN DE LOS ENDPOINTS
 
 \*Hay algo a tener muy en cuenta a la hora de usar los endpoints y eso es el **JWT**, esto debido a que todos **solicitan un TOKEN** de un empleado registrado.
@@ -162,200 +162,155 @@ Ahora usando este formato json crea un nuevo usuario y a su vez crea un nuevo to
 **A TENER EN CUENTA:** Si quieres generar un nuevo token creando otro usuario, debes cambiar el correo, ya que este es un campo único.
 
 ```json
-{
-  "email": "ejemplo1@ejemplo.com",
-  "contrasena": "miContrasenaSegura123",
-  "id_rol": 1,
-  "estado":1
-}    
+    {
+      "id": 6,
+      "cedula": "123456789",
+      "nombre": "Juan",
+      "apellido": "Perez",
+      "email": "juan@example.com",
+      "ubicacion": {
+        "pais": "Colombia",
+        "departamento": "Antioquia",
+        "ciudad": "Medellín",
+        "direccion": "Calle 123"
+    }}
 ```
 
 _Este debe ser el primero, debido a que con su POST generamos el TOKEN que requieren los demás endpoints._
 
 
-POST: `http://127.10.16.15:4018/empleados` _Este endpoint permite registrar un empleado, además de generar su TOKEN_
+POST: `http://127.16.16.16:4600/usuarios` _Este endpoint permite registrar un usuario nuevo, además de generar su TOKEN_
 
-GET: `http://127.10.16.15:4018/empleados` _Este endpoint permite listar todos los empleados registrados_
+GET: `http://127.16.16.16:4600/usuarios` _Este endpoint permite listar todos los usuarios registrados_
 
-GET: `http://127.10.16.15:4018/empleados/:id` _Este endpoint permite listar un empleado especifico por id_
+GET: `http://127.16.16.16:4600/usuarios/:id` _Este endpoint permite listar un empleado especifico por el id_
 
-PUT: `http://127.10.16.15:4018/empleados/:id` _Este endpoint permite editar los empleados buscandolo por numero de documento_
+DELETE: `http://127.10.16.15:4018/empleados/:ObjectId` _Este endpoint permite eliminar los usuarios buscandolo por el ObjectId_
 
 
-### PROVEEDOR
+### VUELOS
 
-El endpoint PROVEEDOR permite crear un nuevo proveedor,editarlo, obtener todos los proveedores o uno específico por su numero de documento.
-
-_**A TENER EN CUENTA: ES NECESARIO QUE SE ENVÍE EL FORMATO DE ESTA MANERA YA QUE SE APLICA UN DTO QUE VERIFICA TODOS LOS DATOS**_
-
-**EJEMPLO**
-
-```json
-{
-  "id_tipo_documento": 1,
-  "numero_documento": "1005184201",
-  "nombre": "Jonathan David",
-  "id_ciudad": 1,
-  "direccion": "Calle 20 #12w-84",
-  "celular": "3224097916",
-  "telefono": "5677543",
-  "email": "jdam1@gmail.com",
-  "estado": true
-}
-```
-
-POST: `http://127.10.16.15:4018/proveedores` _Este endpoint permite registrar un proveedor_
-
-GET: `http://127.10.16.15:4018/proveedores` _Este endpoint permite listar los proveedores_
-
-GET: `http://127.10.16.15:4018/proveedores/:numDocumento` _Este endpoint permite listar un proveedor en especifico por numero de documento_
-
-PUT: `http://127.10.16.15:4018/proveedores/:numDocumento` _Este endpoint permite editar los proveedores buscandolo por numero de documento_
-
-### LOTE
-
-Lote es un endpoint que permite manejar el registro de los pedidos entregados por proveedor ya registrado.
-
-_**A TENER EN CUENTA: ES NECESARIO QUE SE ENVÍE EL FORMATO DE ESTA MANERA YA QUE SE APLICA UN DTO QUE VERIFICA TODOS LOS DATOS**_
-
-**EJEMPLO**
-```json
-{
-  "id_proveedor": 1,
-  "id_producto": 1,
-  "fecha_ingreso": "2023-07-27",
-  "fecha_expedicion": "2023-08-03",
-  "numero_lote": "L12345",
-  "cantidad_compradas": 1,
-  "precio_unidad_compradas": 5.99,
-  "cantidad_disponible_lote": 1
-}
-```
-
-POST: `http://127.10.16.15:4018/lotes` _Este endpoint permite registrar un lote de pedido realizado_
-
-GET: `http://127.10.16.15:4018/lotes` _Este endpoint permite listar todos los lotes registrados_
-
-GET: `http://127.10.16.15:4018/lotes/:numLotes` _Este endpoint permite listar un lote de pedido realizado_
-**NOTA**: En este endpoint el **:numLotes** es el seriado del lote, más **NO es el ID del lote**
-
-GET: `http://127.10.16.15:4018/lotes/numDocumento/:ndocumento` _Este endpoint permite listar un lote perteneciente a determinado proveedor._
-**NOTA**: En este endpoint el **:numDocumento** es el número documento del proveedor que entrego el lote.
-
-PUT: `http://127.10.16.15:4018/lotes/:numLotes` _Este endpoint permite editar un lote de pedido realizado_
-**NOTA**: En este endpoint el **:numLotes** es el seriado del lote, más **NO es el ID del lote**
-
-### PRODUCTO
-
-producto permite registrar cada producto que se va a vender y entra a la licorera
+El endpoint VUELOS permite crear una nueva reserva de vuelo,editarloy  obtener todas las reservas o una es específica por su numero de id.
 
 _**A TENER EN CUENTA: ES NECESARIO QUE SE ENVÍE EL FORMATO DE ESTA MANERA YA QUE SE APLICA UN DTO QUE VERIFICA TODOS LOS DATOS**_
 
 **EJEMPLO**
 
 ```json
-{
-  "codigo": "P12345",
-  "nombre": "Blue Label",
-  "descripcion": "Blue Label from Jhonny Walker",
-  "precio_venta": 1200000,
-  "imagen_producto": "https://ejemplo.com/imagen-producto.jpg",
-  "existencias": 1,
-  "estado": true
-}
+    {
+      "id": 6,
+      "origen": "Bucaramanga",
+      "destino": "Bogotá",
+      "ida": "2023-09-01T00:00:00.000Z",
+      "vuelta": "2023-09-10T00:00:00.000Z",
+      "npasajeros": 3,
+      "clase": "primeraClase",
+      "tipoHuesped": {
+        "adultos": 2,
+        "niños": 1
+      }
+    }
 ```
-POST: `http://127.10.16.15:4018/productos` _Este endpoint permite registrar un producto en la BD_
 
-GET: `http://127.10.16.15:4018/productos` _Este endpoint permite listar todos los productos registrados_
+POST: `http://127.16.16.16:4600/vuelos` _Este endpoint permite registrar una reserva de vuelo_
 
-GET: `http://127.10.16.15:4018/productos/:codigo` _Este endpoint permite listar un producto_
-**NOTA**: En este endpoint el **:codigo** es el código del producto, más **NO es el ID de la tabla del producto**
+GET: `http://127.16.16.16:4600/vuelos` _Este endpoint permite listar las reservas de vuelo_
 
-GET: `http://127.10.16.15:4018/productos/codigoProducto:id` _Este endpoint permite listar un producto por id del producto_
+GET: `http://127.16.16.16:4600/vuelos:id` _Este endpoint permite listar una reserva en especifico por id de la reserva_
 
-PUT: `http://127.10.16.15:4018/productos/:codigo` _Este endpoint permite editar un lote de pedido realizado_
-**NOTA**: En este endpoint el **:codigo** es el código del producto, más **NO es el ID de la tabla del producto**
+DELETE: `http://127.16.16.16:4600/:Objectid` _Este endpoint permite eliminar las reservas buscandolo por Objectid_
 
-### CLIENTE
+### HOSPEDAJES
 
-cliente permite registrar cada cliente que va a comprar en la licorera
+Hospedajes es un endpoint que permite manejar las reservas de los usuarios ya registrados.
+
+_**A TENER EN CUENTA: ES NECESARIO QUE SE ENVÍE EL FORMATO DE ESTA MANERA YA QUE SE APLICA UN DTO QUE VERIFICA TODOS LOS DATOS**_
+
+**EJEMPLO**
+```json
+    {
+      "id": 6,
+      "destino": "Cartagena",
+      "tipo": "hotel",
+      "llegada": "2023-10-15T00:00:00.000Z",
+      "salida": "2023-10-20T00:00:00.000Z",
+      "habitaciones": 1,
+      "nhuespedes": 2,
+      "tipo_huesped": {
+        "adultos": 2,
+        "niños": 0
+      }}
+```
+
+POST: `http://127.16.16.16:4600/hospedajes` _Este endpoint permite registrar una reserva de hospedaje nuevo_
+
+GET: `http://127.16.16.16:4600/hospedajes` _Este endpoint permite listar todos las reservas de hospedajes_
+
+GET: `http://127.16.16.16:4600/hospedajes/:id` _Este endpoint permite listar una reserva especifica pasandole el id_
+
+DELETE: `http://127.16.16.16:4600/hospedajes/:ObjectID` _Este endpoint permite elimionar una reserva pasandole el ObjectID de la que se queire eliminar_
+
+
+### AUTOS
+
+Autos permite registrar cada reserva nueva, eliminar, actualizar y mostrar todas las reservas disponibles.
 
 _**A TENER EN CUENTA: ES NECESARIO QUE SE ENVÍE EL FORMATO DE ESTA MANERA YA QUE SE APLICA UN DTO QUE VERIFICA TODOS LOS DATOS**_
 
 **EJEMPLO**
 
 ```json
-{
-  "id_tipo_documento": 1,
-  "numero_documento": "123456789",
-  "nombre": "Satoru Gojo",
-  "direccion": "Calle 123",
-  "celular": "555-123-4567",
-  "estado": true
-}
+    {
+      "id": 6,
+      "punto_recogida": "Hotel12",
+      "punto_devolucion": "Aeropuerto",
+      "fecha_recogida": "2023-09-15",
+      "fecha_devolucion": "2023-09-25"
+    },
 ```
-POST: `http://127.10.16.15:4018/clientes` _Este endpoint permite registrar un cliente en la BD_
+POST: `http://127.16.16.16:4600/autos` _Este endpoint permite registrar una reserva de auto_
 
-GET: `http://127.10.16.15:4018/clientes` _Este endpoint permite listar todos los clientes registrados_
+GET: `http://127.16.16.16:4600/autos` _Este endpoint permite listar todas las reservas de autos_
 
-GET: `http://127.10.16.15:4018/clientes/:documento` _Este endpoint permite listar un cliente_
+GET: `http://127.16.16.16:4600/autos:id` _Este endpoint permite listar una reserva por su id_
 
-PUT: `http://127.10.16.15:4018/clientes/:documento` _Este endpoint permite editar un cliente pasandole el documento_
+PUT: `http://127.16.16.16:4600/autos/:ObjectID` _Este endpoint permite editar una reserva pasandole el ObjectID_
 
-DELETE: `http://127.10.16.15:4018/clientes/:documento` _Este endpoint permite eliminar un cliente pasandole el documento_
+DELETE: `http://127.16.16.16:4600/autos/:ObjectID` _Este endpoint permite eliminar una reserva pasandole el ObjectID_
 
+### CONTRATOS
 
-### VENTA
-
-ventas permite registrar cada venta que se realiza en la licorera
+Contratos permite llevar registro del tipo de reserva que se hace por usuario.
 
 _**A TENER EN CUENTA: ES NECESARIO QUE SE ENVÍE EL FORMATO DE ESTA MANERA YA QUE SE APLICA UN DTO QUE VERIFICA TODOS LOS DATOS**_
 
 **EJEMPLO**
 
 ```json
-{
-  "fecha_venta": "2023-07-27",
-  "id_cliente": 1,
-  "valor_total": 99.99
-}
+ {
+      "id": 6,
+      "usuarioId": 1,
+      "tipoReserva": "vuelo",
+      "reservaId": 1,
+      "fechaContrato": "2023-08-29",
+      "estado": "activo"
+    }
 ```
-POST: `http://127.10.16.15:4018/ventas` _Este endpoint permite registrar un cliente en la BD_
+POST: `http://127.16.16.16:4600/contratos` _Este endpoint permite registrar un contrato nuevo en la DB_
 
-GET: `http://127.10.16.15:4018/ventas` _Este endpoint permite listar todos los clientes registrados_
+GET: `http://127.16.16.16:4600/contratos` _Este endpoint permite listar todos los contratos actuales_
 
-GET: `http://127.10.16.15:4018/ventas/:idVenta` _Este endpoint permite listar un cliente por id de la venta_
+GET: `http://127.16.16.16:4600/contratos:id` _Este endpoint permite listar un contrato por su id_
 
-PUT: `http://127.10.16.15:4018/ventas/:idventa` _Este endpoint permite editar una venta pasandole el id_
+PUT: `http://127.16.16.16:4600/contratos:ObjectID` _Este endpoint permite editar un contrato pasandole el ObjectID_
 
-### DETALLE VENTA
+DELETE: `http://127.16.16.16:4600/contratos/:ObjectID` _Este endpoint permite eliminar un contrato pasandole el ObjectID_
 
-detalle de venta permite registrar cada detalle de venta que se realiza en la licorera
-
-_**A TENER EN CUENTA: ES NECESARIO QUE SE ENVÍE EL FORMATO DE ESTA MANERA YA QUE SE APLICA UN DTO QUE VERIFICA TODOS LOS DATOS**_
-
-**EJEMPLO**
-
-```json
-{
-  "id_venta": 1,
-  "id_producto": 1,
-  "cantidad": 1,
-  "id_lote": 1,
-  "valor_unitario_venta": 1200000
-}
-```
-POST: `http://127.10.16.15:4018/detalle` _Este endpoint permite registrar detalles de venta en la BD_
-
-GET: `http://127.10.16.15:4018/detalle` _Este endpoint permite listar todos los detalles de las ventas registradas_
-
-GET: `http://127.10.16.15:4018/detalle/:idVenta` _Este endpoint permite listar detalles de venta por id_
-
-PUT: `http://127.10.16.15:4018/detalle/:id` _Este endpoint permite editar detalles de venta pasandole el id_
 
 
 ## AUTORES Y COLABORADORES
 
 - [jdam97](https://github.com/jdam97)
+- [AoKuangg](https://github.com/AoKuangg)
 - [CampusLands](https://github.com/CampusLands)
 
