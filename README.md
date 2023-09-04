@@ -125,10 +125,10 @@ JWT_KEY={}
 5. 
 # PARA LAS COLECCIONES:
 
-En la carpeta **Api/V1**, busca la carpeta **database** y luego el archivo **db.mongodb**(querys mongodb) y ejecuta los query en orden de la base de datos para crear la DB y sus respectivas colecciones.
+Busca en la carpeta  **database** y luego el archivo **db.mongodb**(querys mongodb), selecciona todo y ejecuta todos los query en orden de la base de datos para crear la DB y sus respectivas colecciones.
 
 # PARA LOS DATOS:
-En la carpeta **Api/V1**, busca la carpeta **database** y luego el archivo **data.mongodb**(Datos mongodb)  ejecuta todas las inserciones de los datos.
+Busca la carpeta **database** y luego el archivo **data.mongodb**(Datos mongodb)  ejecuta todas las inserciones de los datos.
 
 
 6. Para finalizar, debes ejecutar en la terminal el siguiente comando. Con él inicializas el servidor y podrás empezar a correr el proyecto.
@@ -148,18 +148,18 @@ POR ARREGLAR
 
 Aparte utilizar **Thunder Client** para ultilizar los endpoints.
 
-### EMPLEADO
-Genera un token haciendo registrando un empleado con la solicitud POST en el endpoint empleado, a continuación te muestro la url que debes usar:
+### USUARIOS
+//Genera un token haciendo registrando un empleado con la solicitud POST en el endpoint empleado, a continuación te muestro la url que debes usar:
 
 ```bash
-  http://127.10.16.15:4552/empleados
+  http://127.16.16.16:4600/usuarios
 ```
 
 _**NOTA: RECUERDA QUE LAS URL USADAS EN LA DOCUMENTACIÓN SON DE EJEMPLO, VARÍAN DEPENDIENDO DE TUS VARIABLES DE ENTORNO**_
 
-Ahora usando este formato json crea un nuevo empleado y a su vez crea un nuevo token, es necesario que se envie el formato de esta manera ya que se aplica un DTO que verifica todos los datos.
+Ahora usando este formato json crea un nuevo usuario y a su vez crea un nuevo token, es necesario que se envie el formato de esta manera ya que se aplica un DTO que verifica todos los datos.
 
-**A TENER EN CUENTA:** Si quieres generar un nuevo token creando otro empleado, debes cambiar el correo, ya que este es un campo único.
+**A TENER EN CUENTA:** Si quieres generar un nuevo token creando otro usuario, debes cambiar el correo, ya que este es un campo único.
 
 ```json
 {
