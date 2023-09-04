@@ -95,7 +95,7 @@ Inicialmente contendrá estas tablas:
 
 ## DIAGRAMA DE LA BASE DE DATOS
 
-![Diagrama relacional de la base de datos](assets/RAPPI.jpg)
+![Diagrama relacional de la base de datos](assets/dbRappiTravel.png)
 
 <h2 style="background-color: #27AE60; color: white; padding: 10px;">INSTALACIÓN</h2>
 
