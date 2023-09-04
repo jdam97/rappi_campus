@@ -1,23 +1,17 @@
 import dotenv from "dotenv";
 import express from "express";
-import UsuarioApp from "./Api/V1/routes/user.routes.js";
-import HospedajeApp from "./Api/V1/routes/hospedajes.routes.js";
-import ContratosApp from "./Api/V1/routes/contratos.routes.js";
-import VuelosApp from "./Api/V1/routes/vuelos.routes.js"
-import AutosApp from "./Api/V1/routes/autos.routes.js"
-import { limitRequest } from "./config/limit.js";
-
+import routesVersioning from "express-routes-versioning";
+import index from "./Api/V1/index.js";
 dotenv.config("../");
 
 const app = express();
+const version =routesVersioning();
 app.use(express.json());
-app.use(limitRequest());
 
-app.use("/usuarios",UsuarioApp);
-app.use("/vuelos",VuelosApp)
-app.use("/hospedajes",HospedajeApp);
-app.use("/contratos",ContratosApp);
-app.use("/autos",AutosApp);
+app.use("/", version({
+    "~1.0.0":index,
+}));
+
 
 let config = JSON.parse(process.env.MY_SERVER);
 app.listen(config, ()=>{
