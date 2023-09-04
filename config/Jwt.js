@@ -1,34 +1,47 @@
-import "dotenv/config";
-import { SignJWT, jwtVerify } from "jose";
+import 'reflect-metadata';
+import {plainToClass, classToPlain } from 'class-transformer';
+import dotenv from 'dotenv';
+import {Router} from 'express';
+import { SignJWT, jwtVerify } from 'jose';
 
-export const TokenGenerator = async (datos) => {
-    let datosToken = {
-        cedula: datos[0].cedula,
-        nombre: datos[0].nombre,
-        permisos: datos[0].permisos
-    };
-    const codificar = new TextEncoder();
-    const Token = await new SignJWT(datosToken).setProtectedHeader({
-        alg: "HS256",
-        typ: "JWT"
-    }).setIssuedAt().setExpirationTime("2h").sign(codificar.encode(process.env.JWT_KEY));
-
-    return Token;
-
-};
-
-export const TokenValidator = async (req,res,next) => {
-    const { authorization } = req.headers;
-    if (!authorization) {
-        return res.status(401).send({
-            message: "No se ha enviado el token o se ha vencido"
-        });
-    }
+dotenv.config("../");
+const appToken = Router();
+const appVerify = Router();
+appToken.use("/", async(req,res)=>{
     try {
-        const codificar = new TextEncoder();
-        req.auth = await jwtVerify(authorization,codificar.encode(process.env.JWT_KEY));
+        let inst =  plainToClass(eval(req.params.collecion), {}, { ignoreDecorators: true })
+        const encoder = new TextEncoder();
+        const jwtconstructor = new SignJWT(Object.assign({}, classToPlain(inst)));
+        const jwt = await jwtconstructor
+        .setProtectedHeader({alg:"HS256", typ: "JWT"})
+        .setIssuedAt()
+        .setExpirationTime("30m")
+        .sign(encoder.encode(process.env.JWT_PRIVATE_KEY));
+        req.data = jwt;
+        res.status(201).send({status: 201, message: jwt});
+    } catch (error) {
+      console.log(error);
+        res.status(404).send({status: 404, message: "Token solicitado no valido"});
+    }
+})
+
+appVerify.use("/", async(req,res,next)=>{
+    const {authorization} = req.headers;
+    if (!authorization) return res.status(400).send({status: 400, token: "Token no enviado"});
+    try {
+        const encoder = new TextEncoder();
+        const jwtData = await jwtVerify(
+            authorization,
+            encoder.encode(process.env.JWT_PRIVATE_KEY)
+        );
+        req.data = jwtData;
         next();
     } catch (error) {
-        res.status(401).send({status:401,Info:{message:"Error en la validacion del token",error:error}});
+        res.status(498).send({status: 498, token: "Token caducado"});
     }
+})
+
+export {
+    appToken,
+    appVerify
 };
