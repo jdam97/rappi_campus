@@ -142,14 +142,30 @@ npm run dev
 
 \*Hay algo a tener muy en cuenta a la hora de usar los endpoints y eso es el **JWT**, esto debido a que todos **solicitan un TOKEN** de un empleado registrado.
 
-**A TENER EN CUENTA:** Cuando un empleado se registra, el endpoint **NO SOLICITA** un **TOKEN**, si no que le crea uno. Este servirá para validar en los demás endpoints.
+**A TENER EN CUENTA:** Se requiere generar un token antes de utilizar cualquier otro endpoint.
 
 **NOTA**: Las url mostradas en la siguiente parte son de ejemplo y pueden variar dependiendo de la configuracion en las variables de entorno que pusiste al momento de la instalacion y configuracion explicados en el punto **4**.
 
 Aparte utilizar **Thunder Client** para ultilizar los endpoints.
 
+### Token
+//Genera un token necesario para las consultas
+```bash
+  http://127.16.16.16:4600/token
+```
+Al realizar esto, se generara un token el cual se debera utilizar para las demas consultas.
+_**NOTA: Recuerda que en los headers de la consulta debes poner Authorization y luego de esto es necesario que coloques el token generado**_
+
+Ejemplo del token
+```json
+{
+  "status": 201,
+  "message": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTM4Mjg0MjUsImV4cCI6MTY5MzgzMDIyNX0.hseNBZ1sUYXOLLuQQbQVVHQGZrjfqIO8CqTci_U9GO8"
+}
+```
+
 ### USUARIOS
-//Genera un token haciendo registrando un empleado con la solicitud POST en el endpoint empleado, a continuación te muestro la url que debes usar:
+//Registrando un usuario con la solicitud POST en el endpoint empleado, a continuación te muestro la url que debes usar:
 
 ```bash
   http://127.16.16.16:4600/usuarios
@@ -157,9 +173,8 @@ Aparte utilizar **Thunder Client** para ultilizar los endpoints.
 
 _**NOTA: RECUERDA QUE LAS URL USADAS EN LA DOCUMENTACIÓN SON DE EJEMPLO, VARÍAN DEPENDIENDO DE TUS VARIABLES DE ENTORNO**_
 
-Ahora usando este formato json crea un nuevo usuario y a su vez crea un nuevo token, es necesario que se envie el formato de esta manera ya que se aplica un DTO que verifica todos los datos.
+Ahora usando este formato json crea un nuevo usuario, es necesario que se envie el formato de esta manera ya que se aplica un DTO que verifica todos los datos.
 
-**A TENER EN CUENTA:** Si quieres generar un nuevo token creando otro usuario, debes cambiar el correo, ya que este es un campo único.
 
 ```json
     {
@@ -176,7 +191,6 @@ Ahora usando este formato json crea un nuevo usuario y a su vez crea un nuevo to
     }}
 ```
 
-_Este debe ser el primero, debido a que con su POST generamos el TOKEN que requieren los demás endpoints._
 
 
 POST: `http://127.16.16.16:4600/usuarios` _Este endpoint permite registrar un usuario nuevo, además de generar su TOKEN_
