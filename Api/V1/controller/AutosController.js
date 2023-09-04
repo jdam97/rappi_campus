@@ -38,7 +38,7 @@ export const getAutosById = async(req,res)=>{
 //Post
 export const createAutos = async(req,res)=>{
     try {
-        let data = autosQuerys.createAutos(req.body);
+        let data = await autosQuerys.createAutos(req.body);
         res.status(200).send({
         message:"Reserva auto creada exitosamente!",
         data

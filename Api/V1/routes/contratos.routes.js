@@ -6,8 +6,9 @@ import {ContratosSchema} from "../../../middleware/Contratos.js"
 
 const ContratosApp = Router();
 
-ContratosApp.get("/", ContratosConsultas.getContratosById);
+ContratosApp.get("/", ContratosConsultas.getAllContratos);
 ContratosApp.get("/:ContratosID", ContratosConsultas.getContratosById);
 ContratosApp.post("/",vSchema(ContratosSchema),ContratosConsultas.createContratos);
-
+ContratosApp.delete("/:_id",ContratosConsultas.deleteContratos);
+ContratosApp.put("/:_id", ContratosConsultas.updateContratos)
 export default ContratosApp;

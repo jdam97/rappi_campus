@@ -19,8 +19,12 @@ export const getAutosById = async(autosId)=>{
 //Post
 export const createAutos = async(Auto)=>{
     let db = await connectDB();
-    let collection = await db.collection('autos');
-    let data = collection.insertOne(Auto).toArray();
+    let collection = db.collection('autos');
+    let fecha_recogida = new Date(Auto.fecha_recogida) 
+    let fecha_devolucion = new Date(Auto.fecha_devolucion) 
+    let datos = {...Auto,fecha_recogida:fecha_recogida,fecha_devolucion:fecha_devolucion}
+    console.log(datos);
+    let data = await collection.insertOne(datos)
     return data
 }
 
@@ -36,6 +40,9 @@ export const deleteAutos = async(idAuto)=>{
 export const putAutos = async(autosId,req)=>{
     let db= await connectDB();
     let collection = await db.collection('autos');
-    let data = collection.updateOne({_id: new ObjectId(autosId)}, {$set: req.body})
+    let fecha_recogida = new Date (req.body.fecha_recogida)
+    let fecha_devolucion = new Date (req.body.fecha_devolucion)
+    let datos = {...req.body,fecha_recogida:fecha_recogida,fecha_devolucion:fecha_devolucion}
+    let data = collection.updateOne({_id:new ObjectId(autosId)},{$set:datos})
     return data
 }
