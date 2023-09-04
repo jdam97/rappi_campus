@@ -148,10 +148,10 @@ npm run dev
 
 Aparte utilizar **Thunder Client** para ultilizar los endpoints.
 
-### Token
+### LogIn
 //Genera un token necesario para las consultas
 ```bash
-  http://127.16.16.16:4600/token
+  http://127.16.16.16:4600/usuarios/login
 ```
 Al realizar esto, se generara un token el cual se debera utilizar para las demas consultas.
 _**NOTA: Recuerda que en los headers de la consulta debes poner Authorization y luego de esto es necesario que coloques el token generado**_
