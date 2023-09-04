@@ -5,13 +5,12 @@ import ContratosApp from "./routes/contratos.routes.js";
 import VuelosApp from "./routes/vuelos.routes.js"
 import AutosApp from "./routes/autos.routes.js"
 import { limitRequest } from "../../config/limit.js";
-import { appToken,appVerify } from "../../config/Jwt.js";
+import { appVerify } from "../../config/Jwt.js";
 
 const index = Router();
 index.use(limitRequest());
 
-index.use("/token",appToken)
-index.use("/usuarios",appVerify,UsuarioApp);
+index.use("/usuarios",UsuarioApp);
 index.use("/vuelos",appVerify,VuelosApp)
 index.use("/hospedajes",appVerify,HospedajeApp);
 index.use("/contratos",appVerify,ContratosApp);
